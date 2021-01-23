@@ -1,0 +1,21 @@
+.ext-grid {
+  display: grid;
+}
+
+.ext-grid > div {
+  text-align: center;
+}
+
+.ext-grid-letter,
+.ext-grid-count {
+  font-weight: 700;
+  color: #999;
+}
+
+.ext-grid-cell {
+  font-weight: 700;
+}
+
+.ext-grid-total {
+  font-weight: 700;
+}

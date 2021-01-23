@@ -1,0 +1,17 @@
+{
+  "name": "Spelling Bee Grid",
+  "version": "1.0",
+  "description": "Is Beeatrice stumping you today?",
+  "manifest_version": 2,
+  "permissions": ["activeTab", "https://www.nytimes.com/puzzles/spelling-bee"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://nytimes.com/puzzles/spelling-bee",
+        "https://www.nytimes.com/puzzles/spelling-bee"
+      ],
+      "css": ["grid.css"],
+      "js": ["content.js"]
+    }
+  ]
+}
