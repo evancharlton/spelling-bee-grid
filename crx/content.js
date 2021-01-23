@@ -208,11 +208,44 @@ const createGrid = (info) => {
   return grid;
 };
 
+const RANKS = [
+  "Beginner",
+  "Good Start",
+  "Moving Up",
+  "Good",
+  "Solid",
+  "Nice",
+  "Great",
+  "Amazing",
+  "Genius",
+]
+  .map((rank) => rank.toLowerCase())
+  .reduce((acc, rank, i) => ({ ...acc, [rank]: i }), {});
+
 const onGameData = ({ gameData }) => {
   const grid = processIntoGrid(gameData.today);
-
   const { show } = createModal(createGrid(grid));
-  addButton(show);
+
+  const checkRank = () => {
+    const progressRank = document.querySelector(".sb-progress-rank");
+    const { textContent } = progressRank;
+    const currentRank = RANKS[textContent.toLowerCase()];
+    const minRank = RANKS["Genius".toLowerCase()];
+    if (
+      minRank === undefined ||
+      currentRank === undefined ||
+      currentRank >= minRank
+    ) {
+      addButton(show);
+    }
+  };
+
+  const observer = new MutationObserver(() => {
+    checkRank();
+  });
+  const progressContainer = document.querySelector(".sb-progress");
+  observer.observe(progressContainer, { subtree: true, characterData: true });
+  checkRank();
 };
 
 const onDocumentLoaded = () => {
