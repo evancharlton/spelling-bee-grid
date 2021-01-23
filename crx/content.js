@@ -127,7 +127,7 @@ const addButton = (onShowModal) => {
   toolbar.appendChild(container);
 };
 
-const processIntoGrid = ({ answers }) => {
+const processIntoGrid = ({ answers, outerLetters, centerLetter }) => {
   const [minLength, maxLength] = answers.reduce(
     ([min, max], { length }) => {
       return [Math.min(length, min), Math.max(length, max)];
@@ -135,7 +135,7 @@ const processIntoGrid = ({ answers }) => {
     [100, 3]
   );
 
-  const firstLetters = [...new Set(answers.map((word) => word[0]))].sort();
+  const firstLetters = [centerLetter, ...outerLetters].sort();
 
   const columns = [
     " ", // This will be the letter column
