@@ -157,9 +157,11 @@ const processIntoGrid = ({ answers, outerLetters, centerLetter }) => {
     const relevantWords = answers.filter((word) => word.startsWith(letter));
     const row = [
       letter.toUpperCase(),
-      ...counts.map(
-        (len) => relevantWords.filter((word) => word.length === len).length
-      ),
+      ...counts.map((len) => {
+        const count = relevantWords.filter((word) => word.length === len)
+          .length;
+        return count || "-";
+      }),
       relevantWords.length,
     ];
     rows.push(row);
@@ -208,7 +210,7 @@ const createGrid = (info) => {
 
       const node = document.createElement("div");
       node.className = className;
-      node.innerText = cell || "-";
+      node.innerText = cell;
       grid.appendChild(node);
     });
   });
