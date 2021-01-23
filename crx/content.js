@@ -104,11 +104,18 @@ const createModal = (grid) => {
 };
 
 const addButton = (onShowModal) => {
+  const buttonId = "ext-grid-button";
+  const existing = !!document.querySelector(`#${buttonId}`);
+  if (existing) {
+    return;
+  }
+
   const toolbar = document.querySelector("#portal-game-toolbar");
   const yesterday = toolbar.lastChild;
   toolbar.removeChild(yesterday);
 
   const button = document.createElement("span");
+  button.id = buttonId;
   button.innerHTML = "Today’s Grid";
   button.className = yesterday.className;
   button.addEventListener("click", onShowModal);
