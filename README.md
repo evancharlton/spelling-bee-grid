@@ -2,6 +2,18 @@
 
 A simple Chrome extension to augment the [New York Times'][nyt] fantastic [Spelling Bee] game.
 
+## Usage
+
+When you reach the "Genius" level, a new button for "Today's Grid" will appear in the toolbar.
+
+![Toolbar button](./screenshots/toolbar.png)
+
+Clicking this button will bring up the grid for today's answers.
+
+![The grid](./screenshots/screenshot.png)
+
+This might just help you reach Queen Bee status on those extra-difficult days!
+
 ## Installation
 
 This is published to the [Chrome Web Store][cws] as the [Spelling Bee Grid][sbg] extension.
